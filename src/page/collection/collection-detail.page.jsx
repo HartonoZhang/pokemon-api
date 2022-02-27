@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, useParams } from "react-router-dom";
 
 import { getPokemonData } from "../../service";
 import DetailOverview from "../../component/detail-overview/detail-overview.component";
-import { TitleHomepage, CollectionPageContainer } from "./collection.styles";
+import { PageContainer, TitlePage, LinkBackStyles} from "../homepage/page.styles";
 
 const CollectionDetailPage = () => {
   const { pokemonId } = useParams();
+  const history = useHistory();
   const [pokemon, setPokemon] = useState();
   const [loading, setLoading] = useState(true);
   const initialApi = "https://pokeapi.co/api/v2/pokemon";
@@ -29,10 +30,11 @@ const CollectionDetailPage = () => {
   }, [pokemonId]);
 
   return (
-    <CollectionPageContainer>
-      <TitleHomepage>Detail Pokemon Data</TitleHomepage>
+    <PageContainer>
+      <TitlePage>Detail Pokemon Data</TitlePage>
+      <LinkBackStyles onClick={() => history.push(`/`)}>BACK</LinkBackStyles>
       <DetailOverview pokemon={pokemon} loading={loading} />
-    </CollectionPageContainer>
+    </PageContainer>
   );
 };
 

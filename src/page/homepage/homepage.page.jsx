@@ -4,7 +4,7 @@ import { getPokemonData, getPokemon } from "../../service";
 
 import CardList from "../../component/card-list/card-list.component";
 import Pagination from "../../component/pagination/paginate.component";
-import { TitleHomepage, HomePageContainer } from "./homepage.styles";
+import { TitlePage, PageContainer } from "./page.styles";
 import { useIsMount } from "./useRef";
 
 let PageSize = 20;
@@ -65,8 +65,8 @@ const Homepage = () => {
   };
 
   return (
-    <HomePageContainer>
-      <TitleHomepage>List Pokemon Data</TitleHomepage>
+    <PageContainer>
+      <TitlePage>List Pokemon Data</TitlePage>
       <CardList pokemon={data} loading={loading} />
       <Pagination
         currentPage={numberPage}
@@ -74,7 +74,7 @@ const Homepage = () => {
         pageSize={PageSize}
         onPageChange={(page) => setNumberPage(page)}
       />
-    </HomePageContainer>
+    </PageContainer>
   );
 };
 

@@ -5,19 +5,6 @@ export const LoadingStyles = styled.h2`
   margin: 40px 0 70px 0;
 `
 
-export const LinkBackStyles = styled.h2`
-  cursor: pointer;
-  position: absolute;
-  left: 15%;
-  top: 85px;
-  color: rgb(207,198,198);
-  transition: 0.5s;
-
-  &:hover{
-    color: white;
-  }
-`
-
 export const DetailOverviewContainer = styled.div`
   background-color: rgb(207,198,198);
   width: 90%;

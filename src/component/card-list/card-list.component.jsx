@@ -7,9 +7,9 @@ const CardList = ({ pokemon, loading }) => {
   }
   return (
     <CardListContainer>
-      {pokemon.map((pokemon) => (
+      {pokemon ? pokemon.map((pokemon) => (
         <CardItem key={pokemon.id} pokemon={pokemon} />
-      ))}
+      )) : ''}
     </CardListContainer>
   );
 };

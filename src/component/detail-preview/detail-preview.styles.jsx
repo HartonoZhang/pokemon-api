@@ -4,10 +4,10 @@ export const InformationContainer = styled.div`
   display: flex;
   border: 2px solid black;
   border-radius: 10px;
+  text-align: left;
 
   div {
     padding: 0 10px;
-    width: 50%;
   }
 
   div p{
@@ -15,12 +15,12 @@ export const InformationContainer = styled.div`
   }
 
   div:first-child{
-    text-align: right;
+    width: 30%;
     font-weight: bold;
   }
 
   div:last-child{
-    text-align: left;
+    width: 70%;
   }
 `
 
