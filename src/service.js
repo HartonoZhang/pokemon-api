@@ -8,7 +8,7 @@ export function getPokemon({ url }) {
   });
 }
 
-export async function getListPokemon(url) {
+export async function getPokemonData(url) {
   return new Promise((resolve, reject) => {
     fetch(url)
       .then((res) => res.json())

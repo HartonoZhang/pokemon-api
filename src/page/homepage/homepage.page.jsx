@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 
-import { getListPokemon, getPokemon } from "../../service";
+import { getPokemonData, getPokemon } from "../../service";
 
 import CardList from "../../component/card-list/card-list.component";
 import Pagination from "../../component/pagination/paginate.component";
 import { TitleHomepage, HomePageContainer } from "./homepage.styles";
+import { useIsMount } from "./useRef";
 
 let PageSize = 20;
 
@@ -14,20 +15,37 @@ const Homepage = () => {
   const [numberPage, setNumberPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const initialApi = "https://pokeapi.co/api/v2/pokemon";
+  const didMountRef = useIsMount();
 
   useEffect(() => {
     const fetchApi = async () => {
+      let response = await getPokemonData(`${initialApi}`);
+      setLimit(response.count);
+    };
+    if (didMountRef()) {
+      return fetchApi();
+    }
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchApi = async () => {
       setLoading(true);
-      let response = await getListPokemon(
+      let response = await getPokemonData(
         `${initialApi}?${new URLSearchParams({
           limit,
         })}`
       );
-      setLimit(response.count);
-      await getData(response.results);
-      setLoading(false);
+      if (isMounted) {
+        await getData(response.results);
+        setLoading(false);
+      }
     };
     fetchApi();
+    return () => {
+      isMounted = false;
+    };
   }, [limit]);
 
   const data = useMemo(() => {
@@ -58,6 +76,6 @@ const Homepage = () => {
       />
     </HomePageContainer>
   );
-}
+};
 
 export default Homepage;

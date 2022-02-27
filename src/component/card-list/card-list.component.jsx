@@ -1,9 +1,9 @@
 import CardItem from '../card-item/card-item.component';
-import { CardListContainer } from './card-list.styles';
+import { CardListContainer, LoadingStyles } from './card-list.styles';
 
 const CardList = ({ pokemon, loading }) => {
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <LoadingStyles>Loading...</LoadingStyles>;
   }
   return (
     <CardListContainer>
