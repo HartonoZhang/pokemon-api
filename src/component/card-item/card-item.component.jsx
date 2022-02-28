@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { upperCaseFirstIndex } from "../detail-preview/utils";
 import { CardItemContainer, CardItemButton } from "./card-item.styles";
+import IconHeart from "../icon-heart/icon-heart.component";
 
 const CardItem = ({ pokemon }) => {
   const history = useHistory();
@@ -12,7 +13,7 @@ const CardItem = ({ pokemon }) => {
   const getDataStorage = () => {
     const localStorageContent = localStorage.getItem("pokemons");
     return localStorageContent === null ? [] : JSON.parse(localStorageContent);
-  }
+  };
 
   const insertData = () => {
     var pokemonData = getDataStorage();
@@ -45,16 +46,12 @@ const CardItem = ({ pokemon }) => {
 
   return (
     <CardItemContainer>
+      <IconHeart favorite={favorite} buttonPrevent={favorite ? removeData : insertData} />
       <img src={sprites.front_default} alt="img" />
       <p>{upperCaseFirstIndex(name)}</p>
-      <CardItemButton details onClick={() => history.push(`pokemon/${id}`)}>
+      <CardItemButton onClick={() => history.push(`pokemon/${id}`)}>
         View Details
       </CardItemButton>
-      {favorite ? (
-        <CardItemButton onClick={() => removeData()}>Unfavorite</CardItemButton>
-      ) : (
-        <CardItemButton onClick={() => insertData()}>Favorite</CardItemButton>
-      )}
     </CardItemContainer>
   );
 };

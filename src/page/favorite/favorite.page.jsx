@@ -15,14 +15,8 @@ const FavoritePage = () => {
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(false);
   const [numberPage, setNumberPage] = useState(1);
-
-  const callData = () => {
-    const localStorageContent = localStorage.getItem("pokemons");
-    var item =
-      localStorageContent === null ? [] : JSON.parse(localStorageContent);
-    return item;
-  };
-
+  const history = useHistory();
+  
   useEffect(() => {
     let isSubscribed = true;
     if (isSubscribed) {
@@ -33,13 +27,19 @@ const FavoritePage = () => {
     return () => (isSubscribed = false);
   }, []);
 
+  const callData = () => {
+    const localStorageContent = localStorage.getItem("pokemons");
+    var item =
+      localStorageContent === null ? [] : JSON.parse(localStorageContent);
+    return item;
+  };
+
   const data = useMemo(() => {
     const firstPageIndex = (numberPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return pokemon.slice(firstPageIndex, lastPageIndex);
   }, [numberPage, pokemon]);
 
-  const history = useHistory();
   return (
     <PageContainer>
       <TitlePage>List Favorite Pokemon</TitlePage>

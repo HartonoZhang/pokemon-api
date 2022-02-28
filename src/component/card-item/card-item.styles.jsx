@@ -1,35 +1,9 @@
-import styled, { css } from "styled-components";
-
-const favoriteStyles = css`
-  background-color: white;
-  color: black;
-  border: 1px solid black;
-
-  &:hover {
-    background-color: #df4723;
-    color: white;
-    border: 1px solid #df4723;
-  }
-`;
-
-const detailStyles = css`
-  background-color: rgb(49, 49, 49);
-  color: white;
-  &:hover {
-    background-color: #357ae8;
-    border: none;
-  }
-`;
-
-const getButtonStyles = props => {
-  if (props.details) {
-    return detailStyles;
-  }
-  return favoriteStyles;
-};
+import styled from "styled-components";
 
 export const CardItemContainer = styled.div`
   text-align: center;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 10px;
   background-color: rgb(207, 198, 198);
   border-radius: 10px;
@@ -39,13 +13,26 @@ export const CardItemContainer = styled.div`
     font-weight: bold;
     margin: 5px 0 8px 0;
   }
+
+  img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
 `;
 
 export const CardItemButton = styled.div`
-  ${getButtonStyles};
   padding: 5px;
-  margin: 10px 0;
+  margin: 3px 0;
   cursor: pointer;
   border-radius: 5px;
   transition: 0.5s;
+  background-color: rgb(49, 49, 49);
+  color: white;
+  border: 1px solid rgb(49,49,49);
+
+  &:hover {
+    background-color: #357ae8;
+    border: 1px solid rgb(49,49,49);
+  }
 `;
