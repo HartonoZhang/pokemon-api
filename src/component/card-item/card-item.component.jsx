@@ -9,10 +9,13 @@ const CardItem = ({ pokemon }) => {
 
   const { name, sprites, id } = pokemon;
 
-  const insertData = () => {
+  const getDataStorage = () => {
     const localStorageContent = localStorage.getItem("pokemons");
-    let pokemonData =
-      localStorageContent === null ? [] : JSON.parse(localStorageContent);
+    return localStorageContent === null ? [] : JSON.parse(localStorageContent);
+  }
+
+  const insertData = () => {
+    var pokemonData = getDataStorage();
     var newItem = {
       name: name,
       sprites: sprites,
@@ -24,18 +27,14 @@ const CardItem = ({ pokemon }) => {
   };
 
   const removeData = () => {
-    const localStorageContent = localStorage.getItem("pokemons");
-    let pokemonData =
-      localStorageContent === null ? [] : JSON.parse(localStorageContent);
-    let item = pokemonData.filter((item) => item.id !== id);
+    var pokemonData = getDataStorage();
+    var item = pokemonData.filter((item) => item.id !== id);
     localStorage.setItem("pokemons", JSON.stringify(item));
     setFavorite(false);
   };
 
   useEffect(() => {
-    const localStorageContent = localStorage.getItem("pokemons");
-    var item =
-      localStorageContent === null ? [] : JSON.parse(localStorageContent);
+    var item = getDataStorage();
     var checkItem = item.find((item) => item.id === id);
     if (checkItem === undefined) {
       setFavorite(false);

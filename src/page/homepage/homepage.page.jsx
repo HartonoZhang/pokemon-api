@@ -29,7 +29,6 @@ const Homepage = () => {
 
   useEffect(() => {
     let isMounted = true;
-
     const fetchApi = async () => {
       setLoading(true);
       let response = await getPokemonData(
@@ -66,7 +65,7 @@ const Homepage = () => {
 
   return (
     <PageContainer>
-      <TitlePage>List Pokemon Data</TitlePage>
+      <TitlePage>List Pokemon</TitlePage>
       <CardList pokemon={data} loading={loading} />
       <Pagination
         currentPage={numberPage}

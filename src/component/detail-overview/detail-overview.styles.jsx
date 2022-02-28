@@ -1,4 +1,11 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+
+const TitleStyles = css`
+  color: rgb(207,198,198);
+  background-color: rgb(49, 49, 49);
+  padding: 3px 8px;
+  border-radius: 5px;
+`
 
 export const LoadingStyles = styled.h2`
   color: rgb(207,198,198);
@@ -20,6 +27,7 @@ export const ProfileDetailContainer = styled.div`
 
   h1{
     margin: 0px 0 2px 0;
+   ${TitleStyles};
   }
 
   img {
@@ -36,5 +44,9 @@ export const InformationAndStatContainer = styled.div`
 
   div {
     width: 100%;
+  }
+
+  div h2{
+    ${TitleStyles}; 
   }
 `
