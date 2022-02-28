@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
+import {
+  PageContainer,
+  TitlePage,
+  LinkBackStyles,
+} from "../homepage/page.styles";
+
 import { getPokemonData } from "../../service";
 import DetailOverview from "../../component/detail-overview/detail-overview.component";
-import { PageContainer, TitlePage, LinkBackStyles} from "../homepage/page.styles";
 
 const CollectionDetailPage = () => {
   const { pokemonId } = useParams();

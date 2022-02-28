@@ -2,6 +2,7 @@ import { InformationContainer, SpanTypeStyle } from "./detail-preview.styles";
 import { checkingValue, upperCaseFirstIndex } from "./utils";
 
 export const DetailPreviewProfile = ({ pokemon }) => {
+  const { id, height, weight, types, abilities, base_experience } = pokemon;
   return (
     <InformationContainer>
       <div>
@@ -13,11 +14,11 @@ export const DetailPreviewProfile = ({ pokemon }) => {
         <p>Base Experience</p>
       </div>
       <div>
-        <p>#{pokemon.id}</p>
-        <p>{checkingValue(pokemon.height)} m</p>
-        <p>{checkingValue(pokemon.weight)} kg</p>
+        <p>#{id}</p>
+        <p>{checkingValue(height)} m</p>
+        <p>{checkingValue(weight)} kg</p>
         <p>
-          {pokemon.types.map((item) => {
+          {types.map((item) => {
             return (
               <SpanTypeStyle key={item.slot}>
                 {upperCaseFirstIndex(item.type.name)}
@@ -26,7 +27,7 @@ export const DetailPreviewProfile = ({ pokemon }) => {
           })}
         </p>
         <p>
-          {pokemon.abilities.map((item) => {
+          {abilities.map((item) => {
             return (
               <SpanTypeStyle key={item.slot}>
                 {upperCaseFirstIndex(item.ability.name)}
@@ -34,7 +35,7 @@ export const DetailPreviewProfile = ({ pokemon }) => {
             );
           })}
         </p>
-        <p>{pokemon.base_experience}</p>
+        <p>{base_experience}</p>
       </div>
     </InformationContainer>
   );

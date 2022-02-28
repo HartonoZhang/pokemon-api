@@ -1,4 +1,3 @@
-
   export const checkingValue = (value) => {
     if (!value) {
       return;
@@ -21,5 +20,6 @@
     }
     let first = value.substring(0, 1);
     let last = value.substring(1, value.length);
-    return first.toUpperCase() + last;
+    let newString = first.toUpperCase() + last;
+    return newString.replaceAll('-', " ");
   };

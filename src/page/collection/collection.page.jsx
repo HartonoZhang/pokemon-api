@@ -1,10 +1,9 @@
 import { Route, useRouteMatch } from "react-router-dom";
-import CollectionDetailPage from "./collection-detail.page";
 
+import CollectionDetailPage from "./collection-detail.page";
 
 const CollectionPage = () => {
   const match = useRouteMatch();
-  
   return (
     <div>
       <Route

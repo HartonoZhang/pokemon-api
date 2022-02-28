@@ -1,13 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
-import CardList from "../../component/card-list/card-list.component";
-import Pagination from "../../component/pagination/paginate.component";
+
 import {
   PageContainer,
   TitlePage,
   LinkBackStyles,
   ItemNotFound,
 } from "../homepage/page.styles";
+
+import CardList from "../../component/card-list/card-list.component";
+import Pagination from "../../component/pagination/paginate.component";
 
 let PageSize = 20;
 
@@ -16,7 +18,7 @@ const FavoritePage = () => {
   const [loading, setLoading] = useState(false);
   const [numberPage, setNumberPage] = useState(1);
   const history = useHistory();
-  
+
   useEffect(() => {
     let isSubscribed = true;
     if (isSubscribed) {

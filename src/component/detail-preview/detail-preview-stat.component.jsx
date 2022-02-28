@@ -1,6 +1,7 @@
 import { InformationContainer } from "./detail-preview.styles";
 
 const DetailPreviewStat = ({ pokemon }) => {
+  const { stats } = pokemon;
   return (
     <InformationContainer>
       <div>
@@ -12,7 +13,7 @@ const DetailPreviewStat = ({ pokemon }) => {
         <p>Speed</p>
       </div>
       <div>
-        {pokemon.stats.map((item) => {
+        {stats.map((item) => {
           return <p key={item.stat.name}>{item.base_stat}</p>;
         })}
       </div>

@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 
-import { getPokemonData, getPokemon } from "../../service";
+import { TitlePage, PageContainer } from "./page.styles";
 
+import { getPokemonData, getPokemon } from "../../service";
 import CardList from "../../component/card-list/card-list.component";
 import Pagination from "../../component/pagination/paginate.component";
-import { TitlePage, PageContainer } from "./page.styles";
 import { useIsMount } from "./useRef";
 
 let PageSize = 20;
@@ -47,12 +47,6 @@ const Homepage = () => {
     };
   }, [limit]);
 
-  const data = useMemo(() => {
-    const firstPageIndex = (numberPage - 1) * PageSize;
-    const lastPageIndex = firstPageIndex + PageSize;
-    return pokemon.slice(firstPageIndex, lastPageIndex);
-  }, [numberPage, pokemon]);
-
   const getData = async (data) => {
     let pokemonData = await Promise.all(
       data.map(async (pokemon) => {
@@ -62,6 +56,12 @@ const Homepage = () => {
     );
     setPokemon(pokemonData);
   };
+
+  const data = useMemo(() => {
+    const firstPageIndex = (numberPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return pokemon.slice(firstPageIndex, lastPageIndex);
+  }, [numberPage, pokemon]);
 
   return (
     <PageContainer>
